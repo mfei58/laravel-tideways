@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "laravelTideways\\tideways\\": "src"
+      "laravel-tideways\\tideways\\": "src"
     }
   },
   "extra": {
