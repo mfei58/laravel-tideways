@@ -5,7 +5,16 @@
 4. mongodb扩展
 
 ## 配置
-
+*发布配置*
+```
+php artisan vendor:publish --tag=tideways-config
+```
+*添加中间件*
+```php
+    protected $middleware = [
+        laravelTideways\middleware\ViaTideways\ViaTideways::class,
+    ];
+```
 *添加APP变量*
 ```
 TIDEWAYS_ENABLE=true

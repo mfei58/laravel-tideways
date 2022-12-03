@@ -10,11 +10,8 @@ class TidewaysServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->make('events')->listen(RequestHandled::class, function (RequestHandled $event) {
-            $this->app->make('tideways')->disable();
-        });
-        $this->app->bind("tidewaysHandler",function($app,$config){
-            $config = $config->get('tideways.connection.mongodb');
+        $this->app->bind("tidewaysHandler",function($app){
+            $config = $app->make('config')->get('tideways.connection.mongodb');
             $host = $config['host'];
             $db = $config['db'];
             $options = array_filter($config['options']);
@@ -28,7 +25,6 @@ class TidewaysServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configurePublishing();
-        Tideways::enable();
     }
 
     /**

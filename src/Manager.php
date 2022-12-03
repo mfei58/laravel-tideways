@@ -8,12 +8,6 @@ use Illuminate\Contracts\Config\Repository as Config;
 class Manager implements ManagerInterface
 {
     /**
-     * 配置参数
-     * @var array
-     */
-    protected $config = [];
-
-    /**
      * @var Application
      */
     protected $app;
@@ -32,9 +26,8 @@ class Manager implements ManagerInterface
     public function __construct(Application $app, Config $config)
     {
         $this->app    = $app;
-        $this->config = $config->get('tideways');
-        $this->handler = $this->app->make('tidewaysHandler',[$app,$config]);
-        $this->setEnable($this->config['enable']);
+        $this->enable = $config->get('tideways.enable');
+        $this->handler = $this->app->make('tidewaysHandler');
     }
     public function enable()
     {
@@ -60,18 +53,6 @@ class Manager implements ManagerInterface
     }
 
     /**
-     * 开启监控
-     * @access public
-     * @param bool $enable 是否已开启
-     * @return $this
-     */
-    public function setEnable(bool $enable = true)
-    {
-        $this->enable = $enable;
-        return $this;
-    }
-
-    /**
      * 是否已开启监控
      * @access public
      * @return bool
@@ -80,6 +61,10 @@ class Manager implements ManagerInterface
     {
         return $this->enable;
     }
+
+    /**
+     * 检查扩展是否安装
+     */
     protected function checkExtension()
     {
         $this->checkXhprof();
