@@ -18,7 +18,7 @@ php artisan vendor:publish --tag=tideways-config
 *添加中间件*
 ```php
     protected $middleware = [
-        laravelTideways\middleware\ViaTideways\ViaTideways::class,
+        laravelTideways\middleware\ViaTideways::class,
     ];
 ```
 *添加APP变量*

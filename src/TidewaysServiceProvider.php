@@ -20,7 +20,7 @@ class TidewaysServiceProvider extends ServiceProvider
             $profiles = new Profiles($mongoClient->$db);
             return new Handler($profiles);
         });
-        $this->app->instance('tideways','laravelTideways\Manager');
+        $this->app->bind('tideways','laravelTideways\Manager');
     }
     public function boot()
     {
