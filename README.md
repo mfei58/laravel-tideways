@@ -3,6 +3,12 @@
 2. xhprof扩展
 3. tideways扩展
 4. mongodb扩展
+5. laravel框架
+
+## 安装
+```
+composer require mfei58/laravel-tideways
+```
 
 ## 配置
 *发布配置*
